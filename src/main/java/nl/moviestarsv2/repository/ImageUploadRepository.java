@@ -1,7 +1,9 @@
 package nl.moviestarsv2.repository;
 
-import nl.moviestarsv2.File.ImageUploadFile;
-import org.springframework.data.repository.CrudRepository;
+import nl.moviestarsv2.model.ImageUpload;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface ImageUploadRepository extends CrudRepository<ImageUploadFile, Long> {
+@Repository
+public interface ImageUploadRepository extends JpaRepository<ImageUpload, Long>{
 }
