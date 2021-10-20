@@ -47,10 +47,12 @@ public class MovieController {
 
     //update an existing movie
     @PutMapping(value = "/{id}")
-    public ResponseEntity<Object> updateMovie(@PathVariable("id") long id, @RequestBody Movie movie) {
+    public ResponseEntity<Object> updateMovie(@PathVariable("id") Long id, @RequestBody Movie movie) {
         movieService.updateMovie(id, movie);
         return ResponseEntity.noContent().build();
     }
+
+
 
     //delete movie
     @DeleteMapping(value = "/{id}")

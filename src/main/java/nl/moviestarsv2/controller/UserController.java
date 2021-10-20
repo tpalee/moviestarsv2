@@ -29,7 +29,7 @@ public class UserController {
 
     //get one user
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Optional<User>> getUser(@PathVariable("id") Long id) {
+    public ResponseEntity<Optional<User>> getUser(@PathVariable("id") String id) {
         return ResponseEntity.ok().body(userService.getUserById(id));
     }
 
@@ -37,7 +37,7 @@ public class UserController {
     //create a new user
     @PostMapping(value = "")
     public ResponseEntity<Object> createUser(@RequestBody User user) {
-        Long newId = userService.createUser(user);
+       String newId = userService.createUser(user);
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(newId).toUri();
@@ -47,14 +47,14 @@ public class UserController {
 
     //update an existing user
     @PutMapping(value = "/{id}")
-    public ResponseEntity<Object> updateUser(@PathVariable("id") Long id, @RequestBody User user) {
+    public ResponseEntity<Object> updateUser(@PathVariable("id") String id, @RequestBody User user) {
         userService.updateUser(id, user);
         return ResponseEntity.noContent().build();
     }
 
     //delete a user
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Object> deleteUser(@PathVariable("id") Long id) {
+    public ResponseEntity<Object> deleteUser(@PathVariable("id") String id) {
         userService.deleteUser(id);
         return ResponseEntity.noContent().build();
     }

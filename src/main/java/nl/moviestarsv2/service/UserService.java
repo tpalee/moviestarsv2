@@ -37,14 +37,14 @@ public class UserService {
 
 
     //create a new user
-    public Long createUser(User user) {
+    public String createUser(User user) {
         User newUser = userRepository.save(user);
-        return newUser.getId();
+        return newUser.getUsername();
     }
 
 
     //update an existing user
-    public void updateUser(Long id, User newUser) {
+    public void updateUser(String id, User newUser) {
         if (!userRepository.existsById(id)) throw new RecordNotFoundException();
         User user = userRepository.findById(id).get();
         user.setUsername(newUser.getUsername());
@@ -53,8 +53,9 @@ public class UserService {
         userRepository.save(user);
     }
 
+
     //delete a user by id
-    public void deleteUser(Long id) {
+    public void deleteUser(String id) {
         if (!userRepository.existsById(id)) throw new RecordNotFoundException();
         userRepository.deleteById(id);
     }
@@ -62,7 +63,7 @@ public class UserService {
 
 
     //find a user by id
-    public Optional<User> getUserById(Long id) {
+    public Optional<User> getUserById(String id) {
         if (!userRepository.existsById(id)) throw new RecordNotFoundException();
         return userRepository.findById(id);
     }
